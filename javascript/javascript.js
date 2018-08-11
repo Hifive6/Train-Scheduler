@@ -43,9 +43,9 @@ var newTrain = {
 //This should upload to firebase onto my database called Train Scheduler
 database.ref().push(newTrain);
 
-// console.log(newTrain.name);
-// console.log(newTrain.destination);
-// console.log(newTrain.time);
-// console.log(newTrain.min);
+var trainName = $("#train-name-input").val(" ");
+var trainDest = $("#destination-input").val(" ");
+var trainTime = $("#first-train-input").val(" ");
+var trainMin = $("#min-input").val(" `");
 
 })
