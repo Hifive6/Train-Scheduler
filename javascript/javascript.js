@@ -25,8 +25,8 @@ $("#train-btn").on("click", function(event){
 //These variables will grab the user inputs and hold the value
 var trainName = $("#train-name-input").val().trim();
 var trainDest = $("#destination-input").val().trim();
-var trainTime = $("#first-train-input").val().trim();
-var trainMin = $("#min-input").val().trim();
+var trainTime = moment($("#first-train-input").val().trim(), "HH:mm").format("Hm");
+var trainMin = moment($("#min-input").val().trim(), "mm").format("m");
 console.log(trainName);
 console.log(trainDest);
 console.log(trainTime);
@@ -42,10 +42,10 @@ var newTrain = {
 // //});
 //This should upload to firebase onto my database called Train Scheduler
 database.ref().push(newTrain);
-
+//Clears variable and input boxes to add more trains
 var trainName = $("#train-name-input").val(" ");
 var trainDest = $("#destination-input").val(" ");
 var trainTime = $("#first-train-input").val(" ");
-var trainMin = $("#min-input").val(" `");
+var trainMin = $("#min-input").val(" ");
 
 })
