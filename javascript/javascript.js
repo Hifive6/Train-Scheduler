@@ -14,7 +14,7 @@
  
  
 var database = firebase.database();
-console.log(database);
+//console.log(database);
  
 
 //This is the event for the that will be attached to submit and add a new train to the schedule 
@@ -27,10 +27,7 @@ var trainName = $("#train-name-input").val().trim();
 var trainDest = $("#destination-input").val().trim();
 var trainTime = moment($("#first-train-input").val().trim(), "HH:mm").format("Hm");
 var trainMin = moment($("#min-input").val().trim(), "mm").format("m");
-console.log(trainName);
-console.log(trainDest);
-console.log(trainTime);
-console.log(trainMin);
+
 
 // database.ref().set({
 var newTrain = {
@@ -39,13 +36,37 @@ var newTrain = {
     time: trainTime,
     min: trainMin,
  };
-// //});
+
 //This should upload to firebase onto my database called Train Scheduler
 database.ref().push(newTrain);
+
+// console.log(newTrain.name);
+// console.log(newTrain.destination);
+// console.log(newTrain.time);
+// console.log(newTrain.min);
 //Clears variable and input boxes to add more trains
 var trainName = $("#train-name-input").val(" ");
 var trainDest = $("#destination-input").val(" ");
 var trainTime = $("#first-train-input").val(" ");
 var trainMin = $("#min-input").val(" ");
 
+});
+
+
+database.ref().on("child_added", function(childSnaphot){
+  console.log(childSnaphot.val());
+
+
+  var trainName = childSnaphot.val().name;
+  var trainDest = childSnaphot.val().destination;
+  var trainTime = childSnaphot.val().time;
+  var trainMin = childSnaphot.val().min;
+
+  console.log(trainName);
+  console.log(trainDest);
+  console.log(trainTime);
+  console.log(trainMin);
 })
+
+
+var 
