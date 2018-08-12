@@ -6,7 +6,7 @@ To begin using the application start by adding the train name, where the destina
 
 
 Please see this page on my Portfolio at
-https://hifive6.github.io/Train-Scheduler/
+https://hifive6.github.io/Bootstrap-Portfolio.html/
 under the Tomato link.
 
 contributor David Juarez
