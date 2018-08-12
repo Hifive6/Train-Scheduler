@@ -68,10 +68,23 @@ database.ref().on("child_added", function(childSnaphot){
   console.log(trainMin);
 
   //this variable converts the time back one 1 year to no conflict for current time
-  var firstTimerConverted = moment(trainTime, "HH:mm").substract(1, "years"):
+  var firstTimeConverted = moment(trainTime, "HH:mm").subtract(1, "years");
+  //confirmed that the time was convert to 1 year in past
+  console.log(firstTimeConverted);
+
+  //this variable will is holding the current time
+  var current = moment();
+  console.log ("Currect Time: " + moment(current).format("HH:mm"));
+
+  //This give me the difference form current time and a years passed in minutes
+  var timeDifference = moment().diff(moment(firstTimeConverted), "minutes");
+  console.log(timeDifference);
+
+  //Time in minutes till next train
+  var tRemainder = timeDifference % trainMin;
+  console.log(tRemainder);
 
 
 })
 
 
-var 
