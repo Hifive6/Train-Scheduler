@@ -88,11 +88,18 @@ database.ref().on("child_added", function(childSnaphot){
   console.log(nextTraintime);
 
   var nextTrain = moment().add(nextTraintime, "minutes");
-
-  var newRow = $("<tr").append(
+  
+  var newRow = $("<tr>").append(
     $("<td>").text(trainName),
+    $("<td>").text(trainDest),
+    $("<td>").text(trainTime),$("<td>").text("Every: " + trainMin + "minutes"),
     
-  )
+    $("<td>").text(nextTrain),
+    $("<td>").text(nextTimeMin),
+
+  );
+
+  $("#train-table > tbody").append(newRow);
 })
 
 
