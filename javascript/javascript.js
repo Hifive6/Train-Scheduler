@@ -26,7 +26,7 @@ $("#train-btn").on("click", function(event){
 var trainName = $("#train-name-input").val().trim();
 var trainDest = $("#destination-input").val().trim();
 var trainTime = moment($("#first-train-input").val().trim(), "HH:mm").format("Hm");
-var trainMin = moment($("#min-input").val().trim(), "mm").format("m");
+var trainMin = $("#min-input").val().trim();
 
 
 // database.ref().set({
@@ -43,7 +43,7 @@ database.ref().push(newTrain);
 // console.log(newTrain.name);
 // console.log(newTrain.destination);
 // console.log(newTrain.time);
-// console.log(newTrain.min);
+ console.log(newTrain.min);
 //Clears variable and input boxes to add more trains
 var trainName = $("#train-name-input").val(" ");
 var trainDest = $("#destination-input").val(" ");
@@ -68,33 +68,34 @@ database.ref().on("child_added", function(childSnaphot){
   console.log(trainMin);
 
   //this variable converts the time back one 1 year to no conflict for current time
-  var firstTimeConverted = moment(trainTime, "HH:mm").subtract(1, "years");
+  var firstTimeConverted = moment(trainTime, "Hm").subtract(1, "years");
   //confirmed that the time was convert to 1 year in past
   console.log(firstTimeConverted);
 
   //this variable will is holding the current time
   var current = moment();
-  console.log ("Currect Time: " + moment(current).format("HH:mm"));
+  console.log ("Currect Time: " + moment(current).format("Hm"));
 
   //This give me the difference form current time and a years passed in minutes
   var timeDifference = moment().diff(moment(firstTimeConverted), "minutes");
-  console.log(timeDifference);
+  console.log("difference of time: " + timeDifference);
 
   //Time in minutes till next train
   var nextTimeMin = timeDifference % trainMin;
   console.log(nextTimeMin);
 
   var nextTraintime = trainMin - nextTimeMin;
-  console.log(nextTraintime);
+  console.log("till next Train: " + nextTraintime);
 
   var nextTrain = moment().add(nextTraintime, "minutes");
+  var convertedNextTrain = moment(nextTrain).format("Hm");
+  //console.log("arrival time " + moment(nextTrain).format("Hm"));
   
   var newRow = $("<tr>").append(
     $("<td>").text(trainName),
     $("<td>").text(trainDest),
-    $("<td>").text(trainTime),$("<td>").text("Every: " + trainMin + "minutes"),
-    
-    $("<td>").text(nextTrain),
+    $("<td>").text("Every: " + trainMin + "minutes"),
+    $("<td>").text(convertedNextTrain),
     $("<td>").text(nextTimeMin),
 
   );
