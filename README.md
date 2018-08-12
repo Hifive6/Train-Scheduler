@@ -4,4 +4,9 @@ This app is designed to help in getting fimiliar with using firebase database sy
 
 To begin using the application start by adding the train name, where the destination is, the time you want it to leave and how often the train will run. The application  will do the math for you and tell you relative to current till when the next time will be arriving and how long in minutes till the next train stop, while keeping any existing add information current and to do date.
 
+
+Please see this page on my Portfolio at
+https://hifive6.github.io/Train-Scheduler/
+under the Tomato link.
+
 contributor David Juarez
