@@ -90,7 +90,9 @@ database.ref().on("child_added", function(childSnaphot){
   var nextTrain = moment().add(nextTraintime, "minutes");
   var convertedNextTrain = moment(nextTrain).format("Hm");
   //console.log("arrival time " + moment(nextTrain).format("Hm"));
+ 
   
+  //adding all information to to variable to call it later to add all info to table
   var newRow = $("<tr>").append(
     $("<td>").text(trainName),
     $("<td>").text(trainDest),
@@ -99,8 +101,8 @@ database.ref().on("child_added", function(childSnaphot){
     $("<td>").text(nextTimeMin),
 
   );
-
-  $("#train-table > tbody").append(newRow);
+  //This adds all information to table updating inputed data to the top as current
+  $("#train-table > tbody").prepend(newRow);
 })
 
 
