@@ -81,10 +81,18 @@ database.ref().on("child_added", function(childSnaphot){
   console.log(timeDifference);
 
   //Time in minutes till next train
-  var tRemainder = timeDifference % trainMin;
-  console.log(tRemainder);
+  var nextTimeMin = timeDifference % trainMin;
+  console.log(nextTimeMin);
 
+  var nextTraintime = trainMin - nextTimeMin;
+  console.log(nextTraintime);
 
+  var nextTrain = moment().add(nextTraintime, "minutes");
+
+  var newRow = $("<tr").append(
+    $("<td>").text(trainName),
+    
+  )
 })
 
 
