@@ -52,11 +52,11 @@ var trainMin = $("#min-input").val(" ");
 
 });
 
-
+//This will create even adding employees to firebase 
 database.ref().on("child_added", function(childSnaphot){
   console.log(childSnaphot.val());
 
-
+//Variables that are now holding values from user input
   var trainName = childSnaphot.val().name;
   var trainDest = childSnaphot.val().destination;
   var trainTime = childSnaphot.val().time;
@@ -66,6 +66,11 @@ database.ref().on("child_added", function(childSnaphot){
   console.log(trainDest);
   console.log(trainTime);
   console.log(trainMin);
+
+  //this variable converts the time back one 1 year to no conflict for current time
+  var firstTimerConverted = moment(trainTime, "HH:mm").substract(1, "years"):
+
+
 })
 
 
