@@ -14,7 +14,7 @@
  
  
 var database = firebase.database();
-//console.log(database);
+console.log(database);
  
 
 //This is the event for the that will be attached to submit and add a new train to the schedule 
